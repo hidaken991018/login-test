@@ -6,7 +6,7 @@ const state = {
   auth: {
     token: localStorage.getItem('token'),
     userId: null
-  }
+  },
 }
 
 export default createStore({

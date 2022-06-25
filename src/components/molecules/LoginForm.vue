@@ -26,6 +26,7 @@
 
 <script>
 import { defineComponent } from 'vue';
+import crypto from 'crypto-js';
 
 export default defineComponent({
   name: 'LoginForm',
@@ -43,6 +44,7 @@ export default defineComponent({
   },
   methods: {
     handle () {
+      this.ecrypt()
       return this.login({
         'user': {
           'email': this.email,
@@ -50,8 +52,24 @@ export default defineComponent({
         }
       })
       .catch(err => { throw err })
-    }
-  }
+    },
+    ecrypt(){
+      const ecrypted = crypto.AES.encrypt(this.email, '任意の暗号化フレーズ');
+      this.$cookies.set("karidata", ecrypted.toString(), 10 * 1 * 1 * 1)
+    },
+     decrypt(){
+      const ecryptedData = this.$cookies.get("karidata")
+      const decrypted = crypto.AES.decrypt(ecryptedData, '任意の暗号化フレーズ');
+      this.email = decrypted.toString(crypto.enc.Utf8)
+     }
+    
+
+  },
+  mounted: function() {
+    console.log("正常です")
+    this.decrypt()
+  },
+
 });
 </script>
 
