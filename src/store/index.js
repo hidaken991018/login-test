@@ -7,6 +7,7 @@ const state = {
     token: localStorage.getItem('token'),
     userId: null
   },
+  mailAddress:"",
 }
 
 export default createStore({
