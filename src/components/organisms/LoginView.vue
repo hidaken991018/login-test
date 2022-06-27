@@ -1,4 +1,5 @@
 <template>
+ <router-view/>
   <div class="login-view">
     <LoginForm :login="handleLogin" />
   </div>

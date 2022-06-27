@@ -1,4 +1,5 @@
 <template>
+ <router-view/>
   <h1>Top page</h1>
   <button class="button" @click="logout()">Logout</button>
 </template>
