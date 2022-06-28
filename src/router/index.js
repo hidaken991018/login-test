@@ -60,7 +60,10 @@ const routes = [
   {
     path: '/login' ,
     name:  'LoginForm',
-    component: loginForm
+    component: loginForm,
+    meta:{
+      loginForm: true
+    }
   },
   {
     path: '/login/mailaddress-form/complete' ,
